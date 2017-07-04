@@ -30,7 +30,7 @@ angular.module('mm.core.course')
         course = $stateParams.course ? angular.copy($stateParams.course) : false;
 
     $scope.courseId = courseId;
-    $scope.sectionToLoad = 2; // Load "General" section by default.
+    $scope.sectionToLoad = 1; // Load "General" section by default.
     $scope.fullname = course.fullname || "";
     $scope.downloadSectionsEnabled = $mmCourseHelper.isDownloadSectionsEnabled();
     $scope.downloadSectionsIcon = getDownloadSectionIcon();
