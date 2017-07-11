@@ -75,16 +75,36 @@ angular.module('mm.core.courses', ['mm.core.contentlinks', 'mm.core.sidemenu'])
             }
         }
     })
-
+    
+    /**
+     * Rerouting available courses to categories 
+     */
+    
+    
     .state('site.mm_availablecourses', {
         url: '/mm_availablecourses',
         views: {
             'site': {
-                templateUrl: 'core/components/courses/templates/availablecourses.html',
+                templateUrl: 'core/components/courses/templates/availablecoursessplit.html',
                 controller: 'mmCoursesAvailableCtrl'
             }
         }
-    });
+    })
+
+    .state('site.mm_category-courses', {
+        url: '/mm_category-courses',
+        params: {
+            categoryid: null,
+            crs: null,
+            ctgrs: null
+        },
+        views: {
+            'site': {
+                templateUrl: 'core/components/courses/templates/availablecourses.html',
+                controller: 'mmCategoryCoursesCtrl'
+            }
+        }
+    }); 
 
 })
 

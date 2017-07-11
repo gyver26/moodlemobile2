@@ -4,6 +4,7 @@
  * Use it to customise the look and feel of the app.
  */
 
+<<<<<<< HEAD
 // Color palette
 $black:           #3a3a3a; // Headings, standard text.
 $gray-darker:     #626262; // Text (emphasis-detail), placeholder, background.
@@ -35,12 +36,6 @@ $orange-light:    lighten($orange, 10%);
 $yellow:          #fbad1a; // Accent (never text).
 $yellow-light:    mix($yellow, white, 20%);
 $yellow-dark:     mix($yellow, black, 40%);
-
-/* app customization */
-$klearn: #00a5d2;
-$orange:  $klearn;
-$blue: $klearn;
-/* end */
 
 // Change Ionic default colors.
 $dark: $black !default;
@@ -77,6 +72,22 @@ $item-disabled-color: $gray-dark !default;
 $button-light-border: $gray;
 
 $toggle-on-default-bg: $blue;
+=======
+// Colors.
+$positive: #387ef5;
+$stable: #f5f5f5;
+$klearn: #00a5d2;
+$base-background-color: #fcfcfc;
+$item-default-bg: white;
+$item-divider-bg: #f1f1f1;
+
+// Setting the default button to button-outline.
+$button-default-bg: white;
+$button-default-text: $klearn;
+$button-default-border: $klearn;
+$button-default-active-bg: $klearn;
+$button-default-active-border: $klearn;
+>>>>>>> Commit local changes
 
 $tabs-off-opacity:                0.6;
 $tabs-striped-off-opacity:        $tabs-off-opacity;
@@ -94,8 +105,17 @@ $ionicons-font-path: "../lib/ionic/release/fonts" !default;
 // Include all of Ionic.
 @import "www/lib/ionic/scss/ionic";
 
+<<<<<<< HEAD
 .icon {
-  color: $klearn;
+  color: $gray-darker;
+=======
+// Tmp fix until Ionic adds !default to $button-default-border and $button-default-active-border.
+$button-default-bg: white;
+$button-default-text: $klearn;
+$button-default-border: $klearn;
+$button-default-active-bg: $klearn;
+$button-default-active-border: $klearn;
+>>>>>>> Commit local changes
 
   &.positive {
     color: $positive;
@@ -174,6 +194,7 @@ $ionicons-font-path: "../lib/ionic/release/fonts" !default;
     }
   }
 
+<<<<<<< HEAD
   &.active,
   &.activated {
     box-shadow: none;
@@ -193,14 +214,30 @@ $ionicons-font-path: "../lib/ionic/release/fonts" !default;
       color: $gray-darker;
     }
   }
-}
-
+=======
 // Include all of Moodle Mobile.
 @import "www/build/mm.bundle.scss";
 
 
-/* more mobile customization */
-
-.mm-bglogo{
-    background: $white;
+.button.button-icon, .button-icon {
+  border-color: transparent;
+  color: white;
+  background-color: transparent;
+>>>>>>> Commit local changes
 }
+
+ .bar-side-menu {
+   background-color: $klearn;
+ }
+ 
+ .bar-content {
+   background-color: $klearn;
+ }
+ 
+ .button.button-positive {
+   border-color: blue;
+   background-color: $klearn;
+    color: #fff;
+ } 
+
+

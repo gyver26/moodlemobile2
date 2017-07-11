@@ -47,7 +47,7 @@ angular.module('mm.core.courses')
             });
 
             $scope.categories = $mmUtil.formatTree(cats, 'parent', 'id', categoryId);
-
+            
             if ($scope.currentCategory) {
                 $scope.title = $scope.currentCategory.name;
 

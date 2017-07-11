@@ -6,12 +6,16 @@
     <form class="mm-view-content">
       <div class="box">
         <div class="text-center padding">
-          <img ng-src="img/moodle.png" class="avatar-full  moodle-logo" role="presentation">
+          <img ng-src="img/elearn.png" class="avatar-full  moodle-logo" role="presentation">
         </div>
-        <p class="padding">{{ 'mm.login.newsitedescription' | translate }}</p>
-        <div class="list item item-input">
+        <p class="padding">Please select the instance you want to access:</p>
+        <!-- <div class="list item item-input">
           <input type="url" placeholder="{{ 'mm.login.siteaddress' | translate }}" ng-model="siteurl" mm-no-input-validation mm-auto-focus >
-        </div>
+        </div> -->
+        <ion-list>
+          <ion-radio ng-model="siteurl" ng-value="'http://k-learn.adb.org/e-courses/'">Klearn</ion-radio>
+          <ion-radio ng-model="siteurl" ng-value="'http://elearn.development.asia/'">Elearn</ion-radio>
+        </ion-list>
         <button class="button button-block button-positive" ng-click="connect(siteurl)" ng-disabled="!siteurl">{{ 'mm.login.connect' | translate }}</button>
       </div>
     </form>

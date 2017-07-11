@@ -1,4 +1,7 @@
 <ion-view view-title="{{ 'mm.courses.categories' | translate }}">
+    <ion-nav-buttons side="secondary">
+        <a ui-sref="site.mm_searchcourses"  class="button button-icon ion-ios-search-strong"></a>
+    </ion-nav-buttons>
     <ion-content mm-state-class>
         <!-- ion-refresher needs to be direct child of ion-content to work with native scrolling -->
         <ion-refresher pulling-text="{{ 'mm.core.pulltorefresh' | translate }}" ng-if="categoriesLoaded" on-refresh="refreshCategories()">
@@ -15,7 +18,7 @@
             <div ng-if="categories.length > 0">
                 <p class="item item-divider">{{ 'mm.courses.categories' | translate }}</p>
                 <section ng-repeat="category in categories">
-                    <a class="item item-icon-left item-text-wrap item-icon-right" ui-sref="site.mm_coursescategories({categoryid: category.id})" title="{{category.name}}">
+                    <a class="item item-icon-left item-text-wrap item-icon-right" ui-sref="site.mm_coursescategories({categoryid: category.id})" title="{{category.name}}" ng-if="category.name != 'Public Courses' ">
                         <i class="icon ion-folder"></i>
                         <h2><mm-format-text watch="true">{{category.name}}</mm-format-text></h2>
                         <span ng-if="category.coursecount > 0" class="badge badge-light">{{category.coursecount}}</span>

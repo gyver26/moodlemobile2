@@ -22,24 +22,72 @@ angular.module('mm.core.courses')
  * @name mmCoursesAvailableCtrl
  */
 .controller('mmCoursesAvailableCtrl', function($scope, $mmCourses, $q, $mmUtil, $mmSite) {
+    /**
+     * Function to sort courses by their main categories 
+     */
+    function sortbycategories(courses){
+        var coursebycategory = courses, 
+            coursesbyparent = [], categoriesbyid = [],
+            categories = $scope.categories;
+            
+        /* sort categories by their id */
+        for(x=0; x < categories.length; x++){
+            if(typeof(categories[x]) != 'undefined' ){
+                categoriesbyid[categories[x].id] = categoriesbyid[categories[x].id] || [];
+                categoriesbyid[categories[x].id] = categories[x];
+            }
+        }
+
+        for(i=0; i < coursebycategory.length; i++){
+            if(typeof(coursebycategory[i]) != 'undefined' ){
+                var index;
+                if( typeof(categoriesbyid[coursebycategory[i].categoryid]) != 'undefined' && categoriesbyid[coursebycategory[i].categoryid].parent != 0 ){
+                    index = categoriesbyid[coursebycategory[i].categoryid].parent;
+                }
+                else{
+                    index = coursebycategory[coursebycategory[i].categoryid].categoryid;
+                }
+                coursesbyparent[index] = coursesbyparent[index] || [];
+                coursesbyparent[index].push(coursebycategory[i]); 
+            }
+        } 
+        
+        return coursesbyparent;
+    }
 
     // Convenience function to search courses.
     function loadCourses() {
         var frontpageCourseId = $mmSite.getSiteHomeId();
         return $mmCourses.getCoursesByField().then(function(courses) {
-            $scope.courses = courses.filter(function(course) {
+            $scope.courses = sortbycategories(courses.filter(function(course) {
                 return course.id != frontpageCourseId;
-            });
+            }));
         }).catch(function(message) {
             $mmUtil.showErrorModalDefault(message, 'mm.courses.errorloadcourses', true);
             return $q.reject();
         });
     }
-
+    
+    // Load Categories
+    function loadCategories() {
+        return $mmCourses.getCategories(0,1).then(function(categories){
+            $scope.categories = categories.filter(function(){
+                return true;
+            });
+        });
+    }
+    
+    loadCategories().finally(function(){
+        $scope.categoriesLoaded = true;
+    }) ;
     loadCourses().finally(function() {
         $scope.coursesLoaded = true;
     });
+    
 
+    
+
+    
     $scope.refreshCourses = function() {
         var promises = [];
 

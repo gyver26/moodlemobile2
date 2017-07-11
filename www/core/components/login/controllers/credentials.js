@@ -35,7 +35,9 @@ angular.module('mm.core.login')
         siteConfig = $stateParams.siteconfig,
         eventThrown = false,
         siteId;
-
+    /* added by gyver */
+    
+    /* end  */
     treatSiteConfig(siteConfig);
 
     // Function to check if a site uses local_mobile, requires SSO login, etc.

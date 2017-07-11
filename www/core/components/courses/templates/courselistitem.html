@@ -2,8 +2,10 @@
     <i class="icon ion-ionic"></i>
     <h2><mm-format-text watch="true">{{course.fullname}}</mm-format-text></h2>
     <div class="buttons buttons-small">
-        <span ng-if="!course.isEnrolled" ng-repeat="instance in course.enrollment" class="button button-icon" aria-label="{{ instance.name | translate }}">
-            <i class="icon icon-accessory {{instance.icon}}"></i>
+        <span ng-repeat="instance in course.enrollment track by $index" class="button button-icon" aria-label="{{ instance.name | translate }}">
+            <span ng-show="!course.isEnrolled">
+              <i class="icon icon-accessory {{instance.icon}}"></i>
+            </span>
         </span>
         <span class="button button-icon">
             <i class="icon icon-accessory ion-chevron-right"></i>

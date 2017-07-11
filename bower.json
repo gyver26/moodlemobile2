@@ -20,8 +20,8 @@
     "angular-chart.js": "^1.0.2"
   },
   "resolutions": {
-    "angular": "1.5.3"
+    "angular": "1.5.3",
+    "angular-translate": "~2.13.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
