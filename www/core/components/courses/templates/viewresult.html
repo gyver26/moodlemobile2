@@ -5,18 +5,19 @@
         <mm-loading hide-until="courseLoaded">
 
             <div ng-if="course" class="list">
+                <img id="coursepreviewimg" ng-src="{{course.previewimage}}">
                 <a class="item item-icon-left" ui-sref="site.mm_course({courseid: course.id, course: course})" title="{{course.fullname}}" ng-if="handlersShouldBeShown">
                     <i class="icon ion-ionic"></i>
                     <h2><mm-format-text watch="true">{{course.fullname}}</mm-format-text></h2>
                     <p ng-if="course.categoryname">{{course.categoryname}}</p>
-                    <p ng-if="course.startdate">{{course.startdate * 1000 | mmFormatDate:"dfdaymonthyear"}} <span ng-if="course.enddate"> - {{course.enddate * 1000 | mmFormatDate:"dfdaymonthyear"}}</span></p>
+                    <p ng-if="course.startdate">{{course.startdate * 1000 | date:"dd MMMM yyyy"}} <span ng-if="course.enddate"> - {{course.enddate * 1000 | date:"dd MMMM yyyy"}}</span></p>
                 </a>
 
                 <div class="item item-icon-left" ng-if="!handlersShouldBeShown">
                     <i class="icon ion-ionic"></i>
                     <h2><mm-format-text watch="true">{{course.fullname}}</mm-format-text></h2>
                     <p ng-if="course.categoryname">{{course.categoryname}}</p>
-                    <p ng-if="course.startdate">{{course.startdate * 1000 | mmFormatDate:"dfdaymonthyear"}} <span ng-if="course.enddate"> - {{course.enddate * 1000 | mmFormatDate:"dfdaymonthyear"}}</span></p>
+                    <p ng-if="course.startdate">{{course.startdate * 1000 | date:"dd MMMM yyyy"}} <span ng-if="course.enddate"> - {{course.enddate * 1000 | date:"dd MMMM yyyy"}}</span></p>
                 </div>
 
                 <div class="item item-text-wrap item-stack-top" ng-if="course.summary">

@@ -62,6 +62,7 @@ angular.module('mm.core.courses')
             $scope.courses = sortbycategories(courses.filter(function(course) {
                 return course.id != frontpageCourseId;
             }));
+            console.log($scope.courses);
         }).catch(function(message) {
             $mmUtil.showErrorModalDefault(message, 'mm.courses.errorloadcourses', true);
             return $q.reject();
@@ -71,7 +72,35 @@ angular.module('mm.core.courses')
     // Load Categories
     function loadCategories() {
         return $mmCourses.getCategories(0,1).then(function(categories){
-            $scope.categories = categories.filter(function(){
+            /**
+             * Put hidden categories at the bottom 
+             */
+            var visibleCategories = [] , hiddenCategories = [], sortedCategories = [];
+            categories.filter(function(){
+                return true;
+            })
+            .sort(function(a, b) {
+                  var nameA = a.name.toUpperCase().trim(); // ignore upper and lowercase
+                  var nameB = b.name.toUpperCase().trim(); // ignore upper and lowercase
+                  if (nameA < nameB) {
+                    return -1;
+                  }
+                  if (nameA > nameB) {
+                    return 1;
+                  }
+                  // names must be equal
+                  return 0;
+            })
+            .forEach(function(category){
+                if(category.visible === 0){
+                    hiddenCategories.push(category);
+                }
+                else{
+                    visibleCategories.push(category);
+                }
+            });
+            sortedCategories = visibleCategories.concat(hiddenCategories);
+            $scope.categories = sortedCategories.filter(function(){
                 return true;
             });
         });

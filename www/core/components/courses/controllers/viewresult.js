@@ -21,7 +21,7 @@ angular.module('mm.core.courses')
  * @ngdoc controller
  * @name mmCoursesViewResultCtrl
  */
-.controller('mmCoursesViewResultCtrl', function($scope, $stateParams, $mmCourses, $mmCoursesDelegate, $mmUtil, $translate, $q,
+.controller('mmCoursesViewResultCtrl', function($scope, $stateParams, $mmCourses, $mmSite, $mmCoursesDelegate, $mmUtil, $translate, $q,
             $ionicModal, $mmEvents, $mmSite, mmCoursesSearchComponent, mmCoursesEnrolInvalidKey, mmCoursesEventMyCoursesUpdated,
             $timeout) {
 
@@ -32,7 +32,7 @@ angular.module('mm.core.courses')
         guestInstanceId,
         enrollmentMethods,
         waitStart = 0;
-
+    
     $scope.course = course;
     $scope.component = mmCoursesSearchComponent;
     $scope.handlersShouldBeShown = true;
@@ -84,6 +84,9 @@ angular.module('mm.core.courses')
                 // Success retrieving the course, we can assume the user has permissions to view it.
                 course.fullname = c.fullname || course.fullname;
                 course.summary = c.summary || course.summary;
+                if(course.overviewfiles[0]){
+                    course.previewimage = $mmSite.fixPluginfileURL(course.overviewfiles[0].fileurl);
+                }
                 return loadCourseNavHandlers(refresh, false);
             }).catch(function() {
                 // The user is not an admin/manager. Check if we can provide guest access to the course.
@@ -277,4 +280,9 @@ angular.module('mm.core.courses')
             });
         }
     }
+    
+    /**
+     * Function to get overviewfiles 
+     */
+     
 });
