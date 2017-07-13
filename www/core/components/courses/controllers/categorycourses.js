@@ -23,6 +23,6 @@ angular.module('mm.core.courses')
  */
 .controller('mmCategoryCoursesCtrl', function($scope, $stateParams, $mmCourses, $q, $mmUtil, $mmSite) {
     var coursesbyparent = $stateParams.crs;
-    $scope.courses = coursesbyparent[$stateParams.categoryid];
+    $scope.courses = coursesbyparent;
     $scope.coursesLoaded = true;
 });

@@ -9,7 +9,7 @@
             <mm-loading hide-until="coursesLoaded">
                 <ul class="list">
                     <li ng-repeat="category in categories" ng-class="{'item-dimmed': category.visible === 0 }">
-                        <a ng-if="category.parent == 0 " class="item item-text-wrap" mm-split-view-link="site.mm_category-courses({categoryid: category.id, crs: courses})" title="{{category.name}}" ng-class="">
+                        <a ng-if="category.parent == 0 " class="item item-text-wrap" mm-split-view-link="site.mm_category-courses({categoryid: category.id, crs: courses[category.id]})" title="{{category.name}}" ng-class="">
                             <mm-format-text watch="true">{{category.name}}</mm-format-text>                            
                         </a>
                     </li>

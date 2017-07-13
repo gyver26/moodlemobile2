@@ -62,7 +62,6 @@ angular.module('mm.core.courses')
             $scope.courses = sortbycategories(courses.filter(function(course) {
                 return course.id != frontpageCourseId;
             }));
-            console.log($scope.courses);
         }).catch(function(message) {
             $mmUtil.showErrorModalDefault(message, 'mm.courses.errorloadcourses', true);
             return $q.reject();

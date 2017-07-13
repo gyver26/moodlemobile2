@@ -265,7 +265,6 @@ angular.module('mm.core.courses')
                 if (typeof courses != 'object' && !angular.isArray(courses)) {
                     return $q.reject();
                 }
-                // console.log(courses);
                 return courses;
             });
         });
@@ -310,7 +309,6 @@ angular.module('mm.core.courses')
             return site.read('core_course_get_courses_by_field', data, preSets).then(function(courses) {
                 if (courses.courses) {
                      /* ADDED BY GYVER  */
-                    // console.log("#################### AVAIL COURSES FIND ME ####################");
                     courses.courses.sort(function(a, b) {
                       var nameA = a.fullname.toUpperCase().trim(); // ignore upper and lowercase
                       var nameB = b.fullname.toUpperCase().trim(); // ignore upper and lowercase
@@ -324,7 +322,6 @@ angular.module('mm.core.courses')
                       // names must be equal
                       return 0;
                     });
-                    // console.log(courses);
                     
                     var ecourses_cat = [1,5,6,10,11,93]; // category ids of  sub ecourses
                     var public_cat = [14]; // category ids of  public courses
@@ -351,16 +348,7 @@ angular.module('mm.core.courses')
                         }
                         
                     });
-                    // console.log("VISIBLE COURSES");
-                    // console.log(visible_courses);
-                    // console.log("E COURSES");
-                    // console.log(ecourses);
-                    // console.log("PUBLIC COURSES");
-                    // console.log(public_courses);   
-                    // console.log("HIDDEN COURSES:");
-                    // console.log(hidden_courses);   
                     var combined_courses = visible_courses.concat( ecourses, hidden_courses );
-                    // console.log(courses);   
                     return combined_courses;
                     /* END OF ADDITION  */
                 }
@@ -559,9 +547,7 @@ angular.module('mm.core.courses')
             }
 
             return site.read('core_enrol_get_users_courses', data, presets).then(function(courses) {
-                // console.log(courses);
                 /* ADDED BY GYVER  */
-                // console.log("#################### MY COURSES FIND ME ####################");
                 courses.sort(function(a, b) {
                   var nameA = a.fullname.toUpperCase().trim(); // ignore upper and lowercase
                   var nameB = b.fullname.toUpperCase().trim(); // ignore upper and lowercase
@@ -608,7 +594,6 @@ angular.module('mm.core.courses')
                 });
 
                 var combined_courses = visible_courses.concat(  ecourses, hidden_courses );
-                console.log(combined_courses);   
                 /* END OF ADDITION  */
                     
                 siteid = siteid || site.getId();
