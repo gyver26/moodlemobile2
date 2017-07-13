@@ -13,7 +13,9 @@
                     <input type="text" placeholder="{{ 'mm.courses.filtermycourses' | translate}}" ng-model="filter.filterText">
                 </ion-input>
             </div>
-            <mm-course-list-progress ng-repeat="course in courses | filter:{fullname: filter.filterText}" course="course" show-summary="true"></mm-course-list-progress>
+            <div class="row responsive-sm" style="flex-wrap: wrap;">
+              <mm-course-list-progress class="col-50" ng-repeat="course in courses | filter:{fullname: filter.filterText}" course="course" show-summary="true" index="{{$index}}"></mm-course-list-progress>
+            </div>
             <mm-empty-box ng-if="!courses || !courses.length" icon="ion-ionic" message="{{ 'mm.courses.nocourses' | translate }}">
                 <p ng-if="searchEnabled">{{ 'mm.courses.searchcoursesadvice' | translate }}</p>
             </mm-empty-box>

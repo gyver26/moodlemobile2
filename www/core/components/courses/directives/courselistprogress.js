@@ -30,7 +30,7 @@ angular.module('mm.core.courses')
  *
  * <mm-course-list-progress course="course" round-progress="true" show-summary="true"></mm-course-list-progress>
  */
-.directive('mmCourseListProgress', function($ionicActionSheet, $mmCoursesDelegate, $translate, $controller, $mmEvents,
+.directive('mmCourseListProgress', function($ionicActionSheet, $mmCoursesDelegate, $translate, $controller, $mmEvents, $mmSite,
         mmCoursesEventCourseOptionsInvalidated) {
     return {
         restrict: 'E',
@@ -38,6 +38,7 @@ angular.module('mm.core.courses')
         transclude: true,
         scope: {
             course: '=',
+            index: '@',
             roundProgress: '=?',
             showSummary: "=?"
         },

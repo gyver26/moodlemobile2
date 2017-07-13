@@ -1,5 +1,5 @@
 {
-    "app_id" : "org.adb.k-learn",
+    "app_id" : "asia.development.elearn",
     "appname": "eLearn",
     "versioncode" : "2018",
     "versionname" : "3.3.0",
@@ -9,7 +9,7 @@
     "wsextservice" : "local_mobile",
     "demo_sites": {},
     "gcmpn": "694767596569",
-    "siteurl": "",
+    "siteurl": "http://elearn.development.asia/",
     "skipssoconfirmation": "false",
     "forcedefaultlanguage": "false",
     "privacypolicy": "https://www.adb.org/terms-use#disclaimers"

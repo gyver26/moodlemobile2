@@ -206,11 +206,28 @@ $ionicons-font-path: "../lib/ionic/release/fonts" !default;
 }
 
 #coursepreviewimg{
-    margin: 15px auto;
-    display: block;
     width: 80%;
-    max-width: 500px;
+    max-width: 270px;
 }
 
+#coursepreviewimg-my{
+    width: 260px;
+    height: 170px;
+    margin: auto;
+    display: block;
+}
 
+.mm-site_mm_courses{
+    .card{
+        min-height: 170px;
+        margin-left:10px;
+        margin-right: 10px;
+        .item:first-child{
+            min-height: 80px;
+        }
+        .item.summary{
+            min-height: 60px;
+        }
+    }
+}
 /* end */

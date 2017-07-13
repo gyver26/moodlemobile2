@@ -13,7 +13,6 @@
           <input type="url" placeholder="{{ 'mm.login.siteaddress' | translate }}" ng-model="siteurl" mm-no-input-validation mm-auto-focus >
         </div> -->
         <ion-list>
-          <ion-radio ng-model="siteurl" ng-value="'http://k-learn.adb.org/e-courses/'">Klearn</ion-radio>
           <ion-radio ng-model="siteurl" ng-value="'http://elearn.development.asia/'">Elearn</ion-radio>
         </ion-list>
         <button class="button button-block button-positive" ng-click="connect(siteurl)" ng-disabled="!siteurl">{{ 'mm.login.connect' | translate }}</button>

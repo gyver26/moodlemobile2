@@ -21,7 +21,7 @@ angular.module('mm.core.courses')
  * @ngdoc service
  * @name $mmCourses
  */
-.factory('$mmCourses', function($q, $mmSite, $log, $mmSitesManager, mmCoursesSearchPerPage, mmCoursesEnrolInvalidKey) {
+.factory('$mmCourses', function($q, $mmSite, $log, $mmSitesManager, $mmSite, mmCoursesSearchPerPage, mmCoursesEnrolInvalidKey) {
 
     $log = $log.getInstance('$mmCourses');
 
@@ -586,6 +586,11 @@ angular.module('mm.core.courses')
                 var x;
             
                 courses.forEach( function (course){
+                    self.getCoursesByField("id",course.id).then(function(courseInfo){
+                        if(courseInfo[0] && courseInfo[0].overviewfiles[0]){
+                            course.previewImage = $mmSite.fixPluginfileURL(courseInfo[0].overviewfiles[0].fileurl);
+                        }
+                    });
                     if(course.visible === 0){
                             hidden_courses.push(course);
                         }
@@ -601,16 +606,9 @@ angular.module('mm.core.courses')
                             }
                         }
                 });
-                // console.log("VISIBLE COURSES");
-                // console.log(visible_courses);
-                // console.log("E COURSES");
-                // console.log(ecourses);
-                // console.log("PUBLIC COURSES");
-                // console.log(public_courses);   
-                // console.log("HIDDEN COURSES:");
-                // console.log(hidden_courses);   
+
                 var combined_courses = visible_courses.concat(  ecourses, hidden_courses );
-                // console.log(courses);   
+                console.log(combined_courses);   
                 /* END OF ADDITION  */
                     
                 siteid = siteid || site.getId();
