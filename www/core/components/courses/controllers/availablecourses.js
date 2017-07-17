@@ -107,7 +107,7 @@ angular.module('mm.core.courses')
     
     loadCategories().finally(function(){
         $scope.categoriesLoaded = true;
-    }) ;
+    });
     loadCourses().finally(function() {
         $scope.coursesLoaded = true;
     });
